@@ -1,0 +1,155 @@
+﻿@{
+    ViewData["Title"] = "Welcome to Our Hospital";
+}
+
+<!-- Hero Section -->
+
+    <!-- optional overlay for contrast -->
+<section class="relative py-5 sm:py-5 lg:py-5 bg-center bg-no-repeat bg-cover"
+         style="background-image: url('/images/bg/mainbg.svg');">
+
+    
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+            <!-- Content (left on md+) -->
+            <div class="order-1 reveal" id="hero-content">
+                <div class="bg-white/95 p-6 sm:p-10 rounded-2xl shadow-sm">
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-800 leading-tight">
+                        Welcome to Our Hospital
+                    </h1>
+
+                    <p class="mt-4 text-blue-700 text-base sm:text-lg md:text-xl max-w-prose">
+                        Thank you for choosing our hospital for your healthcare needs. We deliver personalized care using the latest medical technology.
+                    </p>
+
+                    <p class="mt-4 text-blue-700 text-base max-w-prose">
+                        Our experienced team of physicians and nurses is committed to your recovery — from diagnosis to follow-up care.
+                    </p>
+
+                    <div class="mt-6 flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-3 sm:space-y-0">
+                        <!-- Services: same-page link -->
+                        <a href="#Services"
+                           class="inline-flex justify-center items-center px-5 py-3 rounded-lg border border-blue-800 text-blue-800 font-semibold text-sm sm:text-base
+                      hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 transition">
+                            Our Services
+                        </a>
+
+                        <!-- Book Now: external page (Razor) -->
+                        <a asp-area="" asp-controller="Home" asp-action="BookAppointment"
+                           class="ml-0 sm:ml-4 inline-flex justify-center items-center px-5 py-3 bg-blue-800 text-white font-semibold rounded-lg shadow-md
+                      hover:bg-blue-900 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300 transition transform hover:-translate-y-0.5">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image (right on md+) -->
+            <div class="order-2 flex justify-center md:justify-end reveal" id="hero-image-wrap">
+                <!-- accessible focusable wrapper for keyboard users; acts as decorative/interactive element -->
+                <div class="neumorph rounded-2xl overflow-hidden relative w-full max-w-[520px] h-[320px] sm:h-[380px] md:h-[420px] lg:h-[500px]"
+                     tabindex="0"
+                     role="img"
+                     aria-label="Doctor attending a patient — hero image demo">
+
+                    <img src="@Url.Content("~/images/main/hero.png")"
+                         alt="Doctor attending a patient — CarePoint hero image"
+                         loading="lazy"
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out transform
+                   will-change-transform
+                   -translate-y-1 scale-100" />
+
+                    <!-- subtle overlay for text contrast if needed (hidden by default) -->
+                    <div class="absolute inset-0 pointer-events-none"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- Services Section -->
+<section class="py-16 bg-gray-50 " id="Services">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Specialties</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <!-- Internal Medicine -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition">
+                <svg class="w-12 h-12 mx-auto text-blue-600 mb-4" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 8c-1.1 0-2 .9-2 2v8h4v-8c0-1.1-.9-2-2-2zM6 8c-1.1 0-2 .9-2 2v8h4v-8c0-1.1-.9-2-2-2z" />
+                </svg>
+                <h3 class="text-xl font-semibold mb-2">Internal Medicine</h3>
+                <p class="text-gray-600">Comprehensive adult healthcare services for prevention, diagnosis, and treatment.</p>
+            </div>
+            <!-- Pediatrics -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition">
+                <svg class="w-12 h-12 mx-auto text-blue-600 mb-4" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 4v16m8-8H4" />
+                </svg>
+                <h3 class="text-xl font-semibold mb-2">Pediatrics</h3>
+                <p class="text-gray-600">Specialized care for infants, children, and adolescents.</p>
+            </div>
+            <!-- Surgery -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition">
+                <svg class="w-12 h-12 mx-auto text-blue-600 mb-4" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M15 12l4-4m0 0l-4-4m4 4H9a4 4 0 000 8h6" />
+                </svg>
+                <h3 class="text-xl font-semibold mb-2">Surgery</h3>
+                <p class="text-gray-600">Advanced surgical procedures with state-of-the-art facilities.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="relative py-16 overflow-hidden"
+         >
+    <div class="max-w-3xl mx-auto px-4 relative z-10 bg-white/95 rounded-lg shadow-lg p-8 backdrop-blur-md" style="
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+      url('/images/bg/card.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  ">
+        <h2 class="text-3xl font-bold text-center mb-8 text-blue-800">Contact Us</h2>
+        <form class="space-y-6" >
+            <div>
+                <label class="block text-gray-700 font-semibold mb-2" for="name">Name</label>
+                <input id="name"
+                       type="text"
+                       placeholder="Your Name"
+                       class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            </div>
+            <div>
+                <label class="block text-gray-700 font-semibold mb-2" for="email">Email</label>
+                <input id="email"
+                       type="email"
+                       placeholder="you@example.com"
+                       class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            </div>
+            <div>
+                <label class="block text-gray-700 font-semibold mb-2" for="message">Message</label>
+                <textarea id="message"
+                          rows="4"
+                          placeholder="Your message"
+                          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+            </div>
+            <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition">
+                Send Message
+            </button>
+        </form>
+    </div>
+</section>
+
+

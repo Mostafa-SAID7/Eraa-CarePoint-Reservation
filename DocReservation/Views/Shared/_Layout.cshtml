@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DocReservation</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/logos/iconlogo.png" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/loader.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/DocReservation.styles.css" asp-append-version="true" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com" ></script>
+
+    <!-- Optionally customize Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb', // Blue-600
+                        secondary: '#1e293b' // Slate-800
+                    }
+                }
+            }
+        }
+    </script>
+
+    
+    @RenderSection("Styles", required: false)
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Loader HTML -->
+    <div id="loader" class="fixed inset-0 flex items-center justify-center bg-white bg-opacity-30 backdrop-blur-sm z-50 transition-opacity duration-500">
+        <div class="loader-box relative w-32 h-32 rounded-full border-t border-gray-700 animate-spin"></div>
+        <!-- Or your custom loader markup here -->
+      
+    </div>
+  
+
+
+
+    <header class="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-200">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="~/images/logos/iconlogo2.png" alt="CarePoint Logo" class="h-10 w-auto rounded-md shadow-md" />
+                    <a class="text-3xl font-extrabold text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out" asp-area="" asp-controller="Home" asp-action="Index">
+                        Care<span class="text-gray-800">Point</span>
+                    </a>
+                </div>
+
+
+                <!-- Desktop Menu -->
+                <div class="hidden sm:flex items-center space-x-6">
+                    <a class="text-gray-700 hover:text-blue-600 transition font-medium" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    
+                    <a class="text-gray-700 hover:text-blue-600 transition font-medium" asp-area="" asp-controller="Home" asp-action="ReservationsManagement">Reservation</a>
+                    <a class="text-gray-700 hover:text-blue-600 transition font-medium" asp-area="" asp-controller="Home" asp-action="CompleteAppointment">Doctors</a>
+
+                    <!-- CTA Button -->
+                    <a asp-area="" asp-controller="Home" asp-action="BookAppointment"
+                       class="ml-4 bg-blue-600 text-white px-4 py-2 rounded-xl
+          shadow-2xl hover:shadow-blue-900 hover:bg-blue-700
+          transition-shadow duration-300 ease-in-out transform hover:-translate-y-0.5">
+                        Book Now
+                    </a>
+
+
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="sm:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden sm:hidden bg-white border-t border-gray-200 shadow-lg">
+            <div class="px-4 py-3 space-y-2">
+                <a class="block text-gray-700 hover:text-blue-600 transition font-medium" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="block text-gray-700 hover:text-blue-600 transition font-medium" asp-area="" asp-controller="Home" asp-action="BookAppointment">Booking</a>
+                <a class="block text-gray-700 hover:text-blue-600 transition font-medium" asp-area="" asp-controller="Home" asp-action="ReservationsManagement">Reservation</a>
+                <a class="block text-gray-700 hover:text-blue-600 transition font-medium" asp-area="" asp-controller="Home" asp-action="CompleteAppointment">Completed</a>
+                <a class="block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+                   asp-area="" asp-controller="Home" asp-action="BookAppointment">
+                    Book Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+   
+
+
+    <div class="">
+        <main role="main" class="">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+
+            <!-- About / Logo Section -->
+            <div class="flex flex-col items-center md:items-start bg-blue-700 p-8 rounded-3xl shadow-2xl
+                hover:shadow-blue-900 transition-shadow duration-300 ease-in-out transform hover:-translate-y-1">
+                <img src="~/images/logos/iconlogo2.png"
+                     alt="CarePoint Logo"
+                     class="h-16 w-auto rounded-md shadow-lg mb-6" />
+                <h2 class="text-4xl font-extrabold text-white leading-tight mb-4">CarePoint</h2>
+                <p class="text-gray-300 text-base leading-relaxed">
+                    At CarePoint, we provide compassionate healthcare with a commitment to excellence. Your well-being is our highest priority.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-white font-semibold text-2xl mb-8 tracking-wide border-b border-gray-700 pb-4">Quick Links</h3>
+                <ul class="space-y-4 text-base">
+                    <li><a href="#" class="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded">Home</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded">Book Appointment</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded">Reservations</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded">Completed Visits</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-white font-semibold text-2xl mb-8 tracking-wide border-b border-gray-700 pb-4">Contact Us</h3>
+                <ul class="space-y-4 text-base">
+                    <li>Email: <a href="mailto:info@carepoint.com" class="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded">info@carepoint.com</a></li>
+                    <li>Phone: <a href="tel:+1234567890" class="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded">+1 (234) 567-890</a></li>
+                    <li>Address: 123 Health St, Wellness City</li>
+                    <li>
+                        <div class="flex space-x-3 mt-2 items-center">
+                            <!-- Facebook (brand blue, transparent background) -->
+                            <a href="#"
+                               aria-label="Facebook"
+                               class="p-2 rounded-full text-[#1877F2] hover:text-[#165ecf] transition transform hover:scale-110
+            focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2]/30 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-2.9h2V9.5a3 3 0 0 1 3.2-3.3h2.3v2.6h-1.6c-1 0-1.2.5-1.2 1.2v1.9h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12" />
+                                </svg>
+                            </a>
+
+                            <!-- Twitter (brand sky) -->
+                            <a href="#"
+                               aria-label="Twitter"
+                               class="p-2 rounded-full text-[#1DA1F2] hover:text-[#0d95e8] transition transform hover:scale-110
+            focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1DA1F2]/30 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 22.4.36a9.12 9.12 0 0 1-2.88 1.1A4.52 4.52 0 0 0 16.11 0c-2.5 0-4.51 2.07-4.51 4.62 0 .36.04.7.12 1.03A12.88 12.88 0 0 1 3.07 1.64 4.7 4.7 0 0 0 2.1 4.6c0 1.6.8 3.01 2.02 3.85a4.48 4.48 0 0 1-2.05-.58v.06c0 2.23 1.55 4.08 3.6 4.5a4.38 4.38 0 0 1-2.04.08 4.54 4.54 0 0 0 4.22 3.19A9.07 9.07 0 0 1 0 19.54a12.79 12.79 0 0 0 6.95 2.06c8.34 0 12.9-7.04 12.9-13.15 0-.2 0-.4-.01-.59A9.5 9.5 0 0 0 23 3" />
+                                </svg>
+                            </a>
+
+                            <!-- Instagram (single-brand color, transparent background) -->
+                            <a href="#"
+                               aria-label="Instagram"
+                               class="p-2 rounded-full text-[#E1306C] hover:text-[#d02363] transition transform hover:scale-110
+            focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E1306C]/30 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.5-.88a1.13 1.13 0 1 1-2.26 0 1.13 1.13 0 0 1 2.26 0z" />
+                                </svg>
+                            </a>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-gray-800 py-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12
+              relative flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 w-full">
+
+               
+
+                <!-- Copyright: centered on all screens (flow-centered on mobile, absolute-centered on sm+) -->
+                <p class="text-sm sm:text-base text-gray-400 select-none
+              w-full text-center
+              sm:w-auto sm:absolute sm:left-1/2 sm:-translate-x-1/2 z-10 order-2 sm:order-2">
+                    &copy; 2025 CarePoint. All rights reserved.
+                </p>
+
+            </div>
+        </div>
+
+    </footer>
+
+
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/appointment-validation.js"></script>
+
+    <script src="~/js/loader.js" asp-append-version="true" defer></script>
+    <script src="~/js/site.js" asp-append-version="true" defer></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

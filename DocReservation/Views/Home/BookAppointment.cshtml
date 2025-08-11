@@ -1,0 +1,102 @@
+﻿@model DocReservation.Models.Appointment
+@{
+    ViewData["Title"] = "Book Appointment";
+    var doctors = ViewBag.Doctors as List<string> ?? new List<string>();
+}
+
+<section class="relative py-5 sm:py-5 lg:py-5 bg-center bg-no-repeat bg-cover"
+         style="background-image: url('/images/bg/mainbg.svg');">
+    <div class="py-12 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
+        <h1 class="text-3xl font-extrabold text-center text-white mb-10 tracking-tight">
+            Book an Appointment
+        </h1>
+
+        <form asp-action="BookAppointment" method="post"
+              class="space-y-8 bg-white shadow-2xl rounded-2xl p-10 border border-gray-100" style="
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+      url('/images/bg/card.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  ">
+            @Html.AntiForgeryToken()
+
+            <!-- Doctor Selection -->
+            <div>
+                <label for="DoctorName" class="block text-sm font-semibold text-gray-700 mb-2">Select Doctor</label>
+                <select asp-for="DoctorName" id="DoctorName" name="DoctorName"
+                        class="block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl shadow-sm text-sm text-gray-700
+                           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                           hover:border-blue-400 transition-all duration-200 ease-in-out"
+                        required>
+                    <option value="">-- Select a Doctor --</option>
+                    @foreach (var doc in doctors)
+                    {
+                        <option value="@doc">@doc</option>
+                    }
+                </select>
+                <span asp-validation-for="DoctorName" class="text-red-500 text-xs mt-1 block"></span>
+            </div>
+
+            <!-- Patient Name -->
+            <div>
+                <label asp-for="PatientName" class="block text-sm font-semibold text-gray-700 mb-2">Patient Name</label>
+                <input asp-for="PatientName"
+                       placeholder="Enter your full name"
+                       class="block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl shadow-sm text-sm text-gray-700
+                          focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                          hover:border-blue-400 transition-all duration-200 ease-in-out"
+                       required />
+                <span asp-validation-for="PatientName" class="text-red-500 text-xs mt-1 block"></span>
+            </div>
+
+            <!-- Appointment Date -->
+            <div>
+                <label asp-for="AppointmentDate" class="block text-sm font-semibold text-gray-700 mb-2">Appointment Date</label>
+                <input asp-for="AppointmentDate" type="date"
+                       class="block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl shadow-sm text-sm text-gray-700
+                          focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                          hover:border-blue-400 transition-all duration-200 ease-in-out"
+                       required />
+                <span asp-validation-for="AppointmentDate" class="text-red-500 text-xs mt-1 block"></span>
+            </div>
+
+            <!-- Appointment Time -->
+            <div>
+                <label asp-for="AppointmentTime" class="block text-sm font-semibold text-gray-700 mb-2">Appointment Time</label>
+                <select asp-for="AppointmentTime" id="AppointmentTime"
+                        class="block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl shadow-sm text-sm text-gray-700
+                           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                           hover:border-blue-400 transition-all duration-200 ease-in-out"
+                        required>
+                    <option value="">Select time</option>
+                </select>
+                <span asp-validation-for="AppointmentTime" class="text-red-500 text-xs mt-1 block"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-center pt-4">
+                <button type="submit"
+                        class="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-bold rounded-xl shadow-lg
+                           hover:from-blue-700 hover:to-blue-800 hover:shadow-xl
+                           focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 ease-in-out">
+                    📅 Book Appointment
+                </button>
+            </div>
+        </form>
+</div>
+    
+</section>
+
+
+@section Scripts {
+    <!-- jQuery Validation Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <script src="~/js/appointment-validation.js"></script>
+}
