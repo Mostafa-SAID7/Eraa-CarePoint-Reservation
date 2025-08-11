@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Welcome to Our Hospital";
+}
+
+<!-- Hero Section -->
+<section class="bg-blue-600 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4">Welcome to Our Hospital</h1>
+        <p class="text-lg sm:text-xl mb-6">Thank you for choosing our hospital for your healthcare needs.</p>
+        <p class="text-lg sm:text-xl max-w-2xl mx-auto">
+            We strive to provide the highest quality medical care to our patients, combining compassion with cutting-edge technology.
+        </p>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Specialties</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <!-- Internal Medicine -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition">
+                <svg class="w-12 h-12 mx-auto text-blue-600 mb-4" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 8c-1.1 0-2 .9-2 2v8h4v-8c0-1.1-.9-2-2-2zM6 8c-1.1 0-2 .9-2 2v8h4v-8c0-1.1-.9-2-2-2z" />
+                </svg>
+                <h3 class="text-xl font-semibold mb-2">Internal Medicine</h3>
+                <p class="text-gray-600">Comprehensive adult healthcare services for prevention, diagnosis, and treatment.</p>
+            </div>
+            <!-- Pediatrics -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition">
+                <svg class="w-12 h-12 mx-auto text-blue-600 mb-4" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12 4v16m8-8H4" />
+                </svg>
+                <h3 class="text-xl font-semibold mb-2">Pediatrics</h3>
+                <p class="text-gray-600">Specialized care for infants, children, and adolescents.</p>
+            </div>
+            <!-- Surgery -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition">
+                <svg class="w-12 h-12 mx-auto text-blue-600 mb-4" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M15 12l4-4m0 0l-4-4m4 4H9a4 4 0 000 8h6" />
+                </svg>
+                <h3 class="text-xl font-semibold mb-2">Surgery</h3>
+                <p class="text-gray-600">Advanced surgical procedures with state-of-the-art facilities.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
+        <form class="bg-gray-50 p-8 rounded-lg shadow-lg space-y-6">
+            <div>
+                <label class="block text-gray-700 font-semibold mb-2" for="name">Name</label>
+                <input id="name" type="text" placeholder="Your Name"
+                       class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            </div>
+            <div>
+                <label class="block text-gray-700 font-semibold mb-2" for="email">Email</label>
+                <input id="email" type="email" placeholder="you@example.com"
+                       class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            </div>
+            <div>
+                <label class="block text-gray-700 font-semibold mb-2" for="message">Message</label>
+                <textarea id="message" rows="4" placeholder="Your message"
+                          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+            </div>
+            <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition">
+                Send Message
+            </button>
+        </form>
+    </div>
+</section>

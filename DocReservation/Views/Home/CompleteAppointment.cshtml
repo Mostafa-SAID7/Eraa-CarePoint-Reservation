@@ -1,0 +1,69 @@
+﻿@model List<DocReservation.Models.Doctor>
+@{
+    ViewData["Title"] = "Choose Your Doctor";
+    
+}
+<section class="py-10 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+            Choose Your Doctor
+        </h1>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            @foreach (var doctor in Model)
+            {
+                string tagBgColor = doctor.Specialization switch
+                {
+                    "Cardiology" => "bg-red-600",
+                    "Neurology" => "bg-purple-600",
+                    "Pediatrics" => "bg-green-600",
+                    "Dermatology" => "bg-yellow-400 text-black",
+                    _ => "bg-blue-600"
+                };
+
+                <div tabindex="0" class="group relative bg-[#f6efe6] rounded-xl shadow-md
+                                                 hover:shadow-lg focus:shadow-lg transition-shadow duration-300
+                                                 transform hover:-translate-y-0.5 focus:-translate-y-0.5
+                                                 overflow-hidden flex flex-col justify-between outline-none focus:ring-4 focus:ring-blue-300
+                                                 min-h-[360px]">
+
+                    <!-- Image absolutely positioned for full card coverage on hover/focus -->
+                    <img src="@doctor.Img" alt="@doctor.Name"
+                         class="absolute top-0 left-0 w-3/4 h-auto max-h-[14rem] mx-auto right-0 bottom-auto
+                                        object-contain transition-all duration-500 ease-in-out
+                                        group-hover:w-full group-hover:h-full group-hover:object-cover
+                                        group-focus:w-full group-focus:h-full group-focus:object-cover
+                                        rounded-t-xl
+                                        z-0" />
+
+                    <!-- Overlay on image for better text contrast (visible only on hover/focus) -->
+                    <div class="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-70 group-focus:opacity-70 transition-opacity duration-500 rounded-xl z-10"></div>
+
+                    <!-- Content Area aligned at bottom -->
+                    <div class="relative z-20 w-full mt-auto p-5
+                    bg-gradient-to-t from-black/70 via-transparent to-transparent
+                    rounded-b-xl flex flex-col items-center gap-3 text-center">
+
+                        <!-- Specialization Tag -->
+                        <span class="@tagBgColor text-white px-3 py-1 rounded-full text-xs font-semibold shadow">
+                            @doctor.Specialization
+                        </span>
+
+                        <h5 class="text-lg font-semibold text-white">
+                            @doctor.Name
+                        </h5>
+
+                        <a asp-area="" asp-controller="Home" asp-action="BookAppointment"
+                           asp-route-doctorName="@doctor.Name"
+                           class="inline-block w-full px-4 py-2 bg-blue-600 bg-opacity-90 text-white rounded-lg shadow
+                  hover:bg-blue-700 focus:ring-2 focus:ring-blue-300 transition-colors duration-200 font-medium text-center">
+                            Book Appointment
+                        </a>
+
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</section>
